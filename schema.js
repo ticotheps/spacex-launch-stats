@@ -68,13 +68,11 @@ const RootQuery = new GraphQLObjectType({
 		rocket: {
 			type: RocketType,
 			args: {
-				id: { type: GraphQLInt },
+				id: { type: GraphQLString },
 			},
 			resolve(parent, args) {
 				return axios
-					.get(
-						`https://api.spacexdata.com/v3/rockets/${args.id}`
-					)
+					.get(`https://api.spacexdata.com/v3/rockets/${args.id}`)
 					.then((res) => res.data);
 			},
 		},
